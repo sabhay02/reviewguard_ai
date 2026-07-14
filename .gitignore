@@ -9,3 +9,22 @@ wheels/
 # Virtual environments
 .venv
 .env
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+.venv/
+
+# Temporary cloned repositories
+temp/
+
+# VS Code
+.vscode/
+
+# Python cache
+.pytest_cache/
+
+# Logs
+*.log
