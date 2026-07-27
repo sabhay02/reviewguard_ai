@@ -231,6 +231,15 @@ wheels = [
 ]
 
 [[package]]
+name = "astroid"
+version = "4.0.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/07/63/0adf26577da5eff6eb7a177876c1cfa213856be9926a000f65c4add9692b/astroid-4.0.4.tar.gz", hash = "sha256:986fed8bcf79fb82c78b18a53352a0b287a73817d6dbcfba3162da36667c49a0", size = 406358, upload-time = "2026-02-07T23:35:07.509Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b0/cf/1c5f42b110e57bc5502eb80dbc3b03d256926062519224835ef08134f1f9/astroid-4.0.4-py3-none-any.whl", hash = "sha256:52f39653876c7dec3e3afd4c2696920e05c83832b9737afc21928f2d2eb7a753", size = 276445, upload-time = "2026-02-07T23:35:05.344Z" },
+]
+
+[[package]]
 name = "attrs"
 version = "26.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -784,6 +793,15 @@ nvtx = [
 ]
 
 [[package]]
+name = "dill"
+version = "0.4.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/81/e1/56027a71e31b02ddc53c7d65b01e68edf64dea2932122fe7746a516f75d5/dill-0.4.1.tar.gz", hash = "sha256:423092df4182177d4d8ba8290c8a5b640c66ab35ec7da59ccfa00f6fa3eea5fa", size = 187315, upload-time = "2026-01-19T02:36:56.85Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/77/dc8c558f7593132cf8fefec57c4f60c83b16941c574ac5f619abb3ae7933/dill-0.4.1-py3-none-any.whl", hash = "sha256:1e1ce33e978ae97fcfcff5638477032b801c46c7c65cf717f95fbc2248f79a9d", size = 120019, upload-time = "2026-01-19T02:36:55.663Z" },
+]
+
+[[package]]
 name = "distro"
 version = "1.9.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1331,6 +1349,15 @@ wheels = [
 ]
 
 [[package]]
+name = "isort"
+version = "8.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ef/7c/ec4ab396d31b3b395e2e999c8f46dec78c5e29209fac49d1f4dace04041d/isort-8.0.1.tar.gz", hash = "sha256:171ac4ff559cdc060bcfff550bc8404a486fee0caab245679c2abe7cb253c78d", size = 769592, upload-time = "2026-02-28T10:08:20.685Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3e/95/c7c34aa53c16353c56d0b802fba48d5f5caa2cdee7958acbcb795c830416/isort-8.0.1-py3-none-any.whl", hash = "sha256:28b89bc70f751b559aeca209e6120393d43fbe2490de0559662be7a9787e3d75", size = 89733, upload-time = "2026-02-28T10:08:19.466Z" },
+]
+
+[[package]]
 name = "jinja2"
 version = "3.1.6"
 source = { registry = "https://pypi.org/simple" }
@@ -1579,6 +1606,20 @@ wheels = [
 ]
 
 [[package]]
+name = "langgraph-checkpoint-sqlite"
+version = "3.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiosqlite" },
+    { name = "langgraph-checkpoint" },
+    { name = "sqlite-vec" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e3/ea/83917c2369acf8a10a894d4247655fd063c07924ba5bc4e83c85d2eaeded/langgraph_checkpoint_sqlite-3.1.0.tar.gz", hash = "sha256:f926916ebc1b985d802cc9c820026036e84db9d910d62c97b57e4ba64f67d5ae", size = 147902, upload-time = "2026-05-12T03:34:52.503Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/97/07/b342811a16327900af2747c752ea19676172fcddf9b592cc384031076623/langgraph_checkpoint_sqlite-3.1.0-py3-none-any.whl", hash = "sha256:cc9b40df0076feae8a9ad42ae713621b148b00ac23adc09dc1dc66090a46e5ad", size = 38587, upload-time = "2026-05-12T03:34:51.231Z" },
+]
+
+[[package]]
 name = "langgraph-prebuilt"
 version = "1.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1804,6 +1845,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/fb/df/5bd7a48c256faecd1d36edc13133e51397e41b73bb77e1a69deab746ebac/markupsafe-3.0.3-cp314-cp314t-win32.whl", hash = "sha256:915c04ba3851909ce68ccc2b8e2cd691618c4dc4c4232fb7982bca3f41fd8c3d", size = 14819, upload-time = "2025-09-27T18:37:26.285Z" },
     { url = "https://files.pythonhosted.org/packages/1a/8a/0402ba61a2f16038b48b39bccca271134be00c5c9f0f623208399333c448/markupsafe-3.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4faffd047e07c38848ce017e8725090413cd80cbc23d86e55c587bf979e579c9", size = 15426, upload-time = "2025-09-27T18:37:27.316Z" },
     { url = "https://files.pythonhosted.org/packages/70/bc/6f1c2f612465f5fa89b95bead1f44dcb607670fd42891d8fdcd5d039f4f4/markupsafe-3.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:32001d6a8fc98c8cb5c947787c5d08b0a50663d139f1305bac5885d98d9b40fa", size = 14146, upload-time = "2025-09-27T18:37:28.327Z" },
+]
+
+[[package]]
+name = "mccabe"
+version = "0.7.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e7/ff/0ffefdcac38932a54d2b5eed4e0ba8a408f215002cd178ad1df0f2806ff8/mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325", size = 9658, upload-time = "2022-01-24T01:14:51.113Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/27/1a/1f68f9ba0c207934b35b86a8ca3aad8395a3d6dd7921c0686e23853ff5a9/mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e", size = 7350, upload-time = "2022-01-24T01:14:49.62Z" },
 ]
 
 [[package]]
@@ -3244,6 +3294,34 @@ wheels = [
 ]
 
 [[package]]
+name = "pygraphviz"
+version = "2.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/08/44/efd880d59b94ef3b8c881a4c8ddcaa6f30036997b0ae94710c6f32aaa24c/pygraphviz-2.0.1.tar.gz", hash = "sha256:6f9850617f9444517641d2e14dfdb99ae8294cf7657be86c031fee8f7c54f863", size = 81998, upload-time = "2026-07-20T09:59:35.444Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/93/96/cd843664b7f5886ed0a6abe2d1ece5096226d4a761649ce68f61d5e6e63f/pygraphviz-2.0.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:9cb8eefde7d02eed48012142b8d0d39ff96d79f4e649263894b52012eb8fadd5", size = 1412294, upload-time = "2026-07-20T09:59:03.883Z" },
+    { url = "https://files.pythonhosted.org/packages/69/6c/b7034ad130739964d3909ca289ec75d2fed2771a117df366c9e37e77c14d/pygraphviz-2.0.1-cp311-cp311-macosx_11_0_x86_64.whl", hash = "sha256:3a8773b52f71f1d97b186af7975e8a82f4bdc1353e562d6e55b1f729b855a996", size = 1584744, upload-time = "2026-07-20T09:59:05.378Z" },
+    { url = "https://files.pythonhosted.org/packages/5b/b8/59883fb062ab0e222cbcb769a5df037e315e26390ee082110700ef711d66/pygraphviz-2.0.1-cp311-cp311-manylinux_2_28_aarch64.whl", hash = "sha256:c639182f160986a7fdfad9e6946ab97fb90bc0d658cbacd4feada139e4db91e5", size = 5131332, upload-time = "2026-07-20T09:59:07.106Z" },
+    { url = "https://files.pythonhosted.org/packages/8e/8e/ba68c0aaf34f4e12b218c8d52be3e7639e40938ce9e80a5e41e5bf84c9c1/pygraphviz-2.0.1-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:db453fccc8d8c0e830dd81e37725a24e31a003e56d21b2af41c4e613b16e820d", size = 5357204, upload-time = "2026-07-20T09:59:08.761Z" },
+    { url = "https://files.pythonhosted.org/packages/00/43/e4694b8e925deee427bb2116e826839bc8a63c6e01c1f98671fc80774949/pygraphviz-2.0.1-cp311-cp311-win_amd64.whl", hash = "sha256:db4ed383701b10c9490131420a5dc9afe2b22e7b40b52795657fca1d7f9a151a", size = 6842379, upload-time = "2026-07-20T09:59:10.336Z" },
+    { url = "https://files.pythonhosted.org/packages/b6/ba/e140a189f55ed2f400ab1582ba27ec15eb7325538d35354d0eb858dfb97f/pygraphviz-2.0.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:9df0588e2db8356eeadcec55edb1cd32cc642dd8b0b0ebfe169bf0567e6cd31a", size = 1412494, upload-time = "2026-07-20T09:59:11.817Z" },
+    { url = "https://files.pythonhosted.org/packages/4a/3d/3e6f2f970742289acf09f123f07a8f1168bf5ad61dca3025e678d31c4434/pygraphviz-2.0.1-cp312-cp312-macosx_11_0_x86_64.whl", hash = "sha256:a8b6283075874bf4553081180e59e72470b43c59da5fd7530e9bc4f04a648d51", size = 1584971, upload-time = "2026-07-20T09:59:13.737Z" },
+    { url = "https://files.pythonhosted.org/packages/fa/ff/94293746355f27cb8675fb442de52da1bb79e07fca07ebb06be7b397d1e1/pygraphviz-2.0.1-cp312-cp312-manylinux_2_28_aarch64.whl", hash = "sha256:afb25def99ac094e7b733e9913071217ffc0b3d739ee72e2f3b465241ea64224", size = 5136518, upload-time = "2026-07-20T09:59:15.279Z" },
+    { url = "https://files.pythonhosted.org/packages/4c/a4/18cb081de99c495b0270399124da2f23b7f77471ca93d9651297d169f035/pygraphviz-2.0.1-cp312-cp312-manylinux_2_28_x86_64.whl", hash = "sha256:62c3d76165b283cf70a220de0e22889baee56f8fa3403590840d9eb841f627d2", size = 5362205, upload-time = "2026-07-20T09:59:16.955Z" },
+    { url = "https://files.pythonhosted.org/packages/8d/2d/082fdd9b0b2c87a8da0cb280caa68e36808d424fe24a6f47d6928af28049/pygraphviz-2.0.1-cp312-cp312-win_amd64.whl", hash = "sha256:55d40e8362e5096b9d02f35007caab3246da4a14b72abaf131281dcac24c3dfa", size = 6842560, upload-time = "2026-07-20T09:59:18.466Z" },
+    { url = "https://files.pythonhosted.org/packages/a5/0d/35cd48c3ab3494b92f64629df173fb3e12b814d86fcc43c9ff39ec0410c6/pygraphviz-2.0.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:a393abac0af2f427698f98873b19631abf6311aba8eb90a01764c0904d1c842b", size = 1412167, upload-time = "2026-07-20T09:59:20.143Z" },
+    { url = "https://files.pythonhosted.org/packages/ff/ee/44b0e01d38c0b5fc727ad30b5e55bc2d3cfb0ece2b7c1696003efbc0e7f8/pygraphviz-2.0.1-cp313-cp313-macosx_11_0_x86_64.whl", hash = "sha256:76802fe84d687e842371e27ff68a3d8015055cf4f3b141ae635ac05b1f7cccd2", size = 1584696, upload-time = "2026-07-20T09:59:21.567Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/8e/5ea7c33e0d6ecf6a08166a77da94d1058fa178eac7d73eeab2d4417bb8c3/pygraphviz-2.0.1-cp313-cp313-manylinux_2_28_aarch64.whl", hash = "sha256:5367adcae805c8adbc4f2f0f0f63ba51810674077ca8acf3255f71ce107287cd", size = 5134392, upload-time = "2026-07-20T09:59:23.013Z" },
+    { url = "https://files.pythonhosted.org/packages/39/aa/2acddf77d9527c40ac2429114198afc0fca39821b059713ea6953816d733/pygraphviz-2.0.1-cp313-cp313-manylinux_2_28_x86_64.whl", hash = "sha256:bca869f7894fe95cc33db210e7420bce67a3535a9329cb258856977a808350d9", size = 5360045, upload-time = "2026-07-20T09:59:24.544Z" },
+    { url = "https://files.pythonhosted.org/packages/23/cd/98a3c1e70bc56455fc14c808db7d38e388f4e772ad38e8dbdb51eca7590e/pygraphviz-2.0.1-cp313-cp313-win_amd64.whl", hash = "sha256:721d9d46c1167d9044a00063374b9e34ebca637dab858b523da38e95188b666e", size = 6842392, upload-time = "2026-07-20T09:59:26.18Z" },
+    { url = "https://files.pythonhosted.org/packages/2f/ae/24d1c0984fbb1c2f6231db7e031f7ed22420235575a93f489fc19b143797/pygraphviz-2.0.1-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:2969794de5128a5d5d2f9213d92ebdc724c60ffccae683c0b4141d1e4b160d78", size = 1412189, upload-time = "2026-07-20T09:59:27.702Z" },
+    { url = "https://files.pythonhosted.org/packages/5f/85/d1e3c3817e22ae6caaf119b8cecd579b3bcd7718a9fef4176779a1648dd6/pygraphviz-2.0.1-cp314-cp314-macosx_11_0_x86_64.whl", hash = "sha256:fad64151a38dfd3eaf3ab01e3e9d193ab4e7c60cc8e7bc00f6a338e00f69a5d9", size = 1584772, upload-time = "2026-07-20T09:59:29.189Z" },
+    { url = "https://files.pythonhosted.org/packages/bc/cf/b22dac556161adf1b90d87c2474eb4259df0f52a7d74f5b6c50b0faf4275/pygraphviz-2.0.1-cp314-cp314-manylinux_2_28_aarch64.whl", hash = "sha256:19092a42b570e579231d6c897476aed8d24b6c0b5a966d4d50ccb470c9778fe8", size = 5133963, upload-time = "2026-07-20T09:59:30.568Z" },
+    { url = "https://files.pythonhosted.org/packages/78/d3/9a728b882805db71eb687fe8440df7b2912800856d4619ffe79b1824fe10/pygraphviz-2.0.1-cp314-cp314-manylinux_2_28_x86_64.whl", hash = "sha256:71b13cfacb5ed6e4f5a966bf679e1d383ac70e0274cc74b29ce4b8e7e2709b46", size = 5359616, upload-time = "2026-07-20T09:59:32.24Z" },
+    { url = "https://files.pythonhosted.org/packages/f3/7e/e2e90c36770fc7830c1eae81c91c653bbb41cc69c5e9b0af7ae0590f9cc2/pygraphviz-2.0.1-cp314-cp314-win_amd64.whl", hash = "sha256:8f3a37f5abf0873396243634f30f46dcae118a585cbef13554dd3eed0f9c67e0", size = 7063195, upload-time = "2026-07-20T09:59:33.825Z" },
+]
+
+[[package]]
 name = "pyjwt"
 version = "2.13.0"
 source = { registry = "https://pypi.org/simple" }
@@ -3255,6 +3333,24 @@ wheels = [
 [package.optional-dependencies]
 crypto = [
     { name = "cryptography" },
+]
+
+[[package]]
+name = "pylint"
+version = "4.0.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "astroid" },
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "dill" },
+    { name = "isort" },
+    { name = "mccabe" },
+    { name = "platformdirs" },
+    { name = "tomlkit" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7d/1d/3bb57f303701549550d74bf7ced2b07412be97125c167a0c9d216aa9f762/pylint-4.0.6.tar.gz", hash = "sha256:52f19191bee08bf103f9705ad1a0ece4aa5a0a4ef2bdcbd969375a1e6f6579d5", size = 1585588, upload-time = "2026-06-14T14:43:26.772Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ab/da/acb2e7d4dbd2dfb792d38c0d850481f29ad7049b356d23f56c687d35203b/pylint-4.0.6-py3-none-any.whl", hash = "sha256:d11a0e1fdb7b1cd46ec5d6fc78fee8b95f28695b2d6140e5809925f61e32ea54", size = 538389, upload-time = "2026-06-14T14:43:24.873Z" },
 ]
 
 [[package]]
@@ -3640,10 +3736,13 @@ dependencies = [
     { name = "langchain-huggingface" },
     { name = "langchain-text-splitters" },
     { name = "langgraph" },
+    { name = "langgraph-checkpoint-sqlite" },
     { name = "loguru" },
     { name = "networkx" },
     { name = "pydantic" },
     { name = "pygithub" },
+    { name = "pygraphviz" },
+    { name = "pylint" },
     { name = "python-dotenv" },
     { name = "requests" },
     { name = "rich" },
@@ -3676,10 +3775,13 @@ requires-dist = [
     { name = "langchain-huggingface", specifier = ">=1.2.2" },
     { name = "langchain-text-splitters", specifier = ">=1.1.2" },
     { name = "langgraph", specifier = ">=1.2.9" },
+    { name = "langgraph-checkpoint-sqlite", specifier = ">=3.1.0" },
     { name = "loguru", specifier = ">=0.7.3" },
     { name = "networkx", specifier = ">=3.6.1" },
     { name = "pydantic", specifier = ">=2.13.4" },
     { name = "pygithub", specifier = ">=2.9.1" },
+    { name = "pygraphviz", specifier = ">=2.0.1" },
+    { name = "pylint", specifier = ">=4.0.6" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "requests", specifier = ">=2.34.2" },
     { name = "rich", specifier = ">=15.0.0" },
@@ -4285,6 +4387,18 @@ wheels = [
 ]
 
 [[package]]
+name = "sqlite-vec"
+version = "0.1.9"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/68/85/9fad0045d8e7c8df3e0fa5a56c630e8e15ad6e5ca2e6106fceb666aa6638/sqlite_vec-0.1.9-py3-none-macosx_10_6_x86_64.whl", hash = "sha256:1b62a7f0a060d9475575d4e599bbf94a13d85af896bc1ce86ee80d1b5b48e5fb", size = 131171, upload-time = "2026-03-31T08:02:31.717Z" },
+    { url = "https://files.pythonhosted.org/packages/a4/3d/3677e0cd2f92e5ebc43cd29fbf565b75582bff1ccfa0b8327c7508e1084f/sqlite_vec-0.1.9-py3-none-macosx_11_0_arm64.whl", hash = "sha256:1d52e30513bae4cc9778ddbf6145610434081be4c3afe57cd877893bad9f6b6c", size = 165434, upload-time = "2026-03-31T08:02:32.712Z" },
+    { url = "https://files.pythonhosted.org/packages/00/d4/f2b936d3bdc38eadcbd2a87875815db36430fab0363182ba5d12cd8e0b51/sqlite_vec-0.1.9-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4e921e592f24a5f9a18f590b6ddd530eb637e2d474e3b1972f9bbeb773aa3cb9", size = 160076, upload-time = "2026-03-31T08:02:33.796Z" },
+    { url = "https://files.pythonhosted.org/packages/6f/ad/6afd073b0f817b3e03f9e37ad626ae341805891f23c74b5292818f49ac63/sqlite_vec-0.1.9-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux1_x86_64.whl", hash = "sha256:1515727990b49e79bcaf75fdee2ffc7d461f8b66905013231251f1c8938e7786", size = 163388, upload-time = "2026-03-31T08:02:34.888Z" },
+    { url = "https://files.pythonhosted.org/packages/42/89/81b2907cda14e566b9bf215e2ad82fc9b349edf07d2010756ffdb902f328/sqlite_vec-0.1.9-py3-none-win_amd64.whl", hash = "sha256:4a28dc12fa4b53d7b1dced22da2488fade444e96b5d16fd2d698cd670675cf32", size = 292804, upload-time = "2026-03-31T08:02:36.035Z" },
+]
+
+[[package]]
 name = "sse-starlette"
 version = "3.4.5"
 source = { registry = "https://pypi.org/simple" }
@@ -4427,6 +4541,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/12/64/da524626d3b9cc40c168a13da8335fe1c51be12c0a63685cc6db7308daae/tomli-2.4.1-cp314-cp314t-win_amd64.whl", hash = "sha256:2c1c351919aca02858f740c6d33adea0c5deea37f9ecca1cc1ef9e884a619d26", size = 121196, upload-time = "2026-03-25T20:22:01.169Z" },
     { url = "https://files.pythonhosted.org/packages/5a/cd/e80b62269fc78fc36c9af5a6b89c835baa8af28ff5ad28c7028d60860320/tomli-2.4.1-cp314-cp314t-win_arm64.whl", hash = "sha256:eab21f45c7f66c13f2a9e0e1535309cee140182a9cdae1e041d02e47291e8396", size = 100393, upload-time = "2026-03-25T20:22:02.137Z" },
     { url = "https://files.pythonhosted.org/packages/7b/61/cceae43728b7de99d9b847560c262873a1f6c98202171fd5ed62640b494b/tomli-2.4.1-py3-none-any.whl", hash = "sha256:0d85819802132122da43cb86656f8d1f8c6587d54ae7dcaf30e90533028b49fe", size = 14583, upload-time = "2026-03-25T20:22:03.012Z" },
+]
+
+[[package]]
+name = "tomlkit"
+version = "0.15.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/96/e07752635b98536177fa1f37671c8f3cdde2e724c6bcf6034b2cfb571565/tomlkit-0.15.1.tar.gz", hash = "sha256:e25bbf38843005246210a12982776f27f99cb9be67160e14434d0c0d21ee1e97", size = 180129, upload-time = "2026-07-17T01:48:04.562Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/13/bc/8c13eb66537dce1d2bd3a57132902f38d0e7f5bb46fa9f4daed9fe9d76ee/tomlkit-0.15.1-py3-none-any.whl", hash = "sha256:177a05aece5a8ca5266fd3c448abb47b8d352f09d477d3ca8332db4d89b24304", size = 49449, upload-time = "2026-07-17T01:48:05.728Z" },
 ]
 
 [[package]]

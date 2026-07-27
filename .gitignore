@@ -9,16 +9,11 @@ wheels/
 # Virtual environments
 .venv
 .env
-# Python
-__pycache__/
-*.pyc
-
-# Environment
-.env
-.venv/
+.env.*
 
 # Temporary cloned repositories
 temp/
+backend/temp/
 
 # VS Code
 .vscode/
@@ -28,3 +23,24 @@ temp/
 
 # Logs
 *.log
+
+# Frontend
+node_modules/
+dist/
+frontend/dist/
+
+# Backend Data & DBs
+*.db
+*.db-journal
+reviewguard.db
+checkpoints.db
+checkpoints.db-journal
+chroma_db/
+backend/chroma_db/
+reports/
+backend/reports/
+backend/knowledge/
+
+# OS
+.DS_Store
+Thumbs.db
