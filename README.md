@@ -17,22 +17,20 @@ Powered by a LangGraph AI workflow, ReviewGuard AI orchestrates multiple static 
      - **Supervisor Agent:** Aggregates findings from all sub-agents, deduplicates overlapping issues, and formats the final markdown report.
    - **Retrieval-Augmented Generation (RAG):** Integrates ChromaDB to index repository code and security knowledge bases, providing the AI agents with deep, contextual awareness of your specific codebase when generating reports and fixes.
 
-2. **Interactive Analytics Dashboard** 📊
-   - View historical scan reports in a stunning dark-mode UI.
-   - Includes interactive Donut and Bar charts powered by `recharts` to quickly understand risk distribution across tools and severity levels.
+2. **Asynchronous Webhook Processing** ⚡
+   - GitHub Webhooks are instantly received by the FastAPI backend and pushed to a **Redis Queue**.
+   - A dedicated **ARQ Background Worker** picks up the jobs and processes the heavy LLM pipelines asynchronously, ensuring the API remains fast and resilient.
 
-3. **Automated Remediation** ⚡
-   - With a single click, AI can generate and apply code fixes for identified vulnerabilities.
-   - Automatically commits and pushes the fixes to your GitHub Pull Request.
+3. **Automated Remediation (Human-in-the-Loop)** 🛠️
+   - When the pipeline detects a vulnerability, execution pauses for Human Review.
+   - With a single click on the dashboard, the AI can securely rewrite the vulnerable code and automatically push the patch directly to your GitHub Pull Request.
 
 4. **Context-Aware ChatBot** 💬
-   - Ask questions about your security scan directly in the dashboard! The embedded ChatBot has full context of the markdown report.
+   - Ask questions about your security scan directly in the dashboard! The embedded ChatBot uses strict grounding rules to only answer based on the generated markdown report, eliminating hallucination.
 
-5. **Robust Security Architecture** 🔒
-   - **API Authentication:** Backend endpoints are fully secured by an API Key to prevent unauthorized access.
-   - **CORS Lockdown:** Strict Cross-Origin policies.
-   - **Anti-SSRF:** URL validation to prevent Server-Side Request Forgery.
-   - **Anti-Injection:** Hardened `subprocess` execution to prevent command injection.
+5. **Interactive Analytics Dashboard** 📊
+   - View historical scan reports in a stunning dark-mode React UI.
+   - Includes interactive Donut and Bar charts powered by `recharts` to quickly understand risk distribution across tools and severity levels.
 
 ---
 
@@ -41,43 +39,74 @@ Powered by a LangGraph AI workflow, ReviewGuard AI orchestrates multiple static 
 ReviewGuard AI is built with:
 
 - **Backend:** FastAPI (Python), LangGraph (Agentic Workflow), SQLite (Checkpointer & History), ChromaDB (RAG).
+- **Background Jobs:** Redis, ARQ (Python).
 - **Frontend:** React, Vite, Tailwind CSS, Recharts.
 - **LLM Provider:** Groq (Llama-3).
+- **DevOps:** Docker, Docker Compose, Ngrok (Local Tunneling).
+- **Documentation:**
+  - [GitHub Actions Integration](docs/GITHUB_ACTIONS.md)
+  - [Multi-Agent Architecture](docs/AGENTS.md)
+  - [System Architecture & Production Roadmap](SYSTEM_DESIGN.md)
 
 ---
 
-## 🚀 Getting Started
+## 🐳 Quick Start with Docker
+
+The fastest way to get ReviewGuard AI running. No Python, Node, or tool installations required!
+
+### Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) & [Docker Compose](https://docs.docker.com/compose/install/)
+- A Groq API Key
+- A GitHub Personal Access Token
+
+### 1. Clone & Configure
+
+```bash
+git clone <repository-url>
+cd reviewguard_ai
+
+# Configure backend secrets
+cp backend/.env.example backend/.env
+# Edit backend/.env and set GROQ_API_KEY, GITHUB_TOKEN, NGROK_AUTHTOKEN, and REVIEWGUARD_API_KEY
+```
+
+### 2. Build & Run
+
+```bash
+docker compose up -d --build
+```
+*(This spins up the FastAPI Backend, ARQ Worker, Redis Database, React Frontend, and Ngrok tunnel).*
+
+### 3. Open the Dashboard
+
+- **Frontend:** [http://localhost](http://localhost)
+- **Backend API:** [http://localhost:8000](http://localhost:8000)
+- **Ngrok Tunnel (For Webhooks):** [http://localhost:4040](http://localhost:4040)
+
+To stop: `docker compose down`
+
+---
+
+## 🚀 Manual Setup (Without Docker)
 
 ### Prerequisites
 
 - Node.js (v18+)
-- Python (3.10+)
+- Python (3.11+)
+- Redis Server running on port 6379
 - Git installed on your system
-- A Groq API Key
-- GitHub Personal Access Token (for PR comments and Auto-Fix pushes)
 
-### 1. Clone the repository
-
-```bash
-git clone repository
-cd reviewguard_ai
-```
-
-### 2. Setup the Backend
+### 1. Setup the Backend
 
 ```bash
 cd backend
-python -m venv .venv
-source .venv/bin/activate  # Or `.venv\Scripts\activate`
-
-pip install -r requirements.txt
+uv sync # Or use venv and pip install -r requirements.txt
 
 # Set up your environment variables
 cp .env.example .env
-# Edit .env and add GROQ_API_KEY, GITHUB_TOKEN, and REVIEWGUARD_API_KEY
 ```
 
-### 3. Setup the Frontend
+### 2. Setup the Frontend
 
 ```bash
 cd frontend
@@ -87,22 +116,23 @@ npm install
 echo "VITE_API_KEY=your_secure_api_key_here" > .env.local
 ```
 
-> **Note:** Make sure that `REVIEWGUARD_API_KEY` in the backend `.env` matches `VITE_API_KEY` in the frontend `.env.local` so the dashboard can authenticate with the API!
+### 3. Run the Application
 
-### 4. Run the Application
+Open three terminal windows:
 
-Open two terminal windows:
-
-**Terminal 1 (Backend):**
-
+**Terminal 1 (Backend API):**
 ```bash
 cd backend
-source .venv/bin/activate
-uvicorn app.main:app --reload --port 8000
+uv run uvicorn app.main:app --reload --port 8000
 ```
 
-**Terminal 2 (Frontend):**
+**Terminal 2 (ARQ Worker):**
+```bash
+cd backend
+uv run arq app.worker.WorkerSettings
+```
 
+**Terminal 3 (Frontend):**
 ```bash
 cd frontend
 npm run dev

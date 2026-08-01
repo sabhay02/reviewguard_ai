@@ -1,4 +1,8 @@
 from contextlib import asynccontextmanager
+import os
+import redis.asyncio as redis
+from arq import create_pool
+from arq.connections import RedisSettings
 
 from fastapi import FastAPI
 
@@ -17,6 +21,11 @@ from fastapi import Depends
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # ── Startup ──────────────────────────────────────────
+    redis_url = f"redis://{os.getenv('REDIS_HOST', 'localhost')}:6379/0"
+    app.state.redis = redis.from_url(redis_url, encoding="utf-8", decode_responses=True)
+    app.state.arq_pool = await create_pool(RedisSettings(host=os.getenv("REDIS_HOST", "localhost"), port=6379))
+    print("[Startup] Redis & ARQ Pool initialized.")
+
     initialize_db()          # ensure reviews table exists
     print("[Startup] Database initialized.")
     ingest_knowledge()       # index knowledge/*.md docs into ChromaDB

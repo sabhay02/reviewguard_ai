@@ -3,7 +3,7 @@ import subprocess
 def run_semgrep(paths: list[str]):
 
     if not paths:
-        return "[]"
+        return "{}"
 
     command = [
         "semgrep",

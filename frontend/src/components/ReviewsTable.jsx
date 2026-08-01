@@ -87,7 +87,7 @@ export default function ReviewsTable({ reviews }) {
                   </div>
                 </td>
                 <td className="px-6 py-5 whitespace-nowrap text-sm text-gray-400">
-                  {new Date(review.review_date).toLocaleString(undefined, {
+                  {new Date(review.review_date.replace(' ', 'T') + 'Z').toLocaleString(undefined, {
                     month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
                   })}
                 </td>

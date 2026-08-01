@@ -3,7 +3,8 @@ import axios from 'axios';
 import { MessageSquare, Send, Bot, User, Loader2, X } from 'lucide-react';
 import MarkdownRenderer from './MarkdownRenderer';
 
-const API_BASE = 'http://localhost:8000/chat';
+import API_BASE from '../config/api';
+const CHAT_URL = `${API_BASE}/chat`;
 
 export default function ChatBot({ reviewId }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function ChatBot({ reviewId }) {
     setLoading(true);
 
     try {
-      const res = await axios.post(API_BASE, {
+      const res = await axios.post(CHAT_URL, {
         review_id: reviewId,
         message: userMessage.content,
         // Exclude the very first greeting message from being sent as history to save tokens

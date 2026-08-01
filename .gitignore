@@ -10,7 +10,7 @@ wheels/
 .venv
 .env
 .env.*
-
+.env.local
 # Temporary cloned repositories
 temp/
 backend/temp/

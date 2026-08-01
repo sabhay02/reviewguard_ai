@@ -8,12 +8,14 @@ def run_gitleaks(repo_path: str) -> str:
 
     command = [
         "gitleaks",
-        "dir",
+        "detect",
+        "--source",
         ".",
         "--report-format",
         "json",
         "--report-path",
         "-",
+        "--no-git",
     ]
 
     print("Running:", command)

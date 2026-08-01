@@ -38,7 +38,7 @@ def list_reviews():
 
 @router.get("/pending")
 def list_pending():
-    conn = sqlite3.connect('reviewguard.db')
+    conn = sqlite3.connect('data/reviewguard.db')
     try:
         threads = [row[0] for row in conn.execute('SELECT DISTINCT thread_id FROM checkpoints').fetchall()]
     except Exception:

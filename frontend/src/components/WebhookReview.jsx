@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AlertTriangle, CheckCircle2, XCircle, RefreshCw, Loader2, GitPullRequest, Rocket } from 'lucide-react';
 import MarkdownRenderer from './MarkdownRenderer';
 
-const API_BASE = 'http://localhost:8000';
+import API_BASE from '../config/api';
 
 export default function WebhookReview({ onDecisionComplete }) {
   const [pending, setPending] = useState([]);

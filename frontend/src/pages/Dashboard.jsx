@@ -6,7 +6,8 @@ import ReviewsTable from '../components/ReviewsTable';
 import WebhookReview from '../components/WebhookReview';
 import { Link } from 'react-router-dom';
 
-const API_BASE = 'http://localhost:8000/dashboard';
+import API_BASE from '../config/api';
+const DASHBOARD_URL = `${API_BASE}/dashboard`;
 
 function Dashboard() {
   const [stats, setStats] = useState(null);
@@ -17,8 +18,8 @@ function Dashboard() {
   const fetchData = async () => {
     try {
       const [statsRes, reviewsRes] = await Promise.all([
-        axios.get(`${API_BASE}/stats`),
-        axios.get(`${API_BASE}/reviews`),
+        axios.get(`${DASHBOARD_URL}/stats`),
+        axios.get(`${DASHBOARD_URL}/reviews`),
       ]);
       setStats(statsRes.data);
       setReviews(reviewsRes.data);

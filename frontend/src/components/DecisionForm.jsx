@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { CheckCircle2, XCircle, UserCheck } from 'lucide-react';
 
-const API_BASE = 'http://localhost:8000/review';
+import API_BASE from '../config/api';
+const REVIEW_URL = `${API_BASE}/review`;
 
 export default function DecisionForm({ onDecisionComplete }) {
   const [reviewId, setReviewId] = useState('');
@@ -22,7 +23,7 @@ export default function DecisionForm({ onDecisionComplete }) {
     setSuccess(null);
 
     try {
-      await axios.post(`${API_BASE}/${reviewId.trim()}/decision`, {
+      await axios.post(`${REVIEW_URL}/${reviewId.trim()}/decision`, {
         approved: approved === true,
         feedback: feedback.trim(),
         action: typeof approved === 'string' ? approved : (approved ? 'approve' : 'reject')

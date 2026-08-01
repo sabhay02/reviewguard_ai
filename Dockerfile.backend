@@ -1,0 +1,45 @@
+FROM python:3.11-slim
+
+# Prevent Python from writing .pyc and enable unbuffered output
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Gitleaks
+RUN curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz \
+    | tar -xz -C /usr/local/bin gitleaks \
+    && chmod +x /usr/local/bin/gitleaks
+
+WORKDIR /app
+
+# Copy dependency files first (better layer caching)
+COPY pyproject.toml ./
+
+# Install Python dependencies
+# Step 1: Install CPU-only PyTorch first (avoids downloading 2GB+ of NVIDIA CUDA packages)
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+# Step 2: Install the rest of the project dependencies
+RUN pip install --no-cache-dir .
+
+# Copy backend source code
+COPY backend/ ./backend/
+
+# Copy knowledge base for RAG ingestion
+COPY backend/knowledge/ ./backend/knowledge/
+
+# Create directories for runtime data
+RUN mkdir -p backend/temp backend/reports backend/data
+
+EXPOSE 8000
+
+# Run from the backend directory
+WORKDIR /app/backend
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

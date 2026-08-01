@@ -1,0 +1,43 @@
+# Git
+.git
+.gitignore
+
+# Virtual environments
+.venv
+__pycache__
+*.pyc
+
+# Frontend node_modules (rebuilt inside container)
+frontend/node_modules
+frontend/dist
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Runtime data (not needed in image)
+backend/temp
+backend/reports
+backend/chroma_db
+backend/.ruff_cache
+backend/__pycache__
+backend/checkpointer.sqlite
+backend/checkpoints.sqlite
+backend/reviewguard.db
+backend/test_pylint
+
+# Docker (don't send compose file into build context)
+docker-compose.yml
+
+# Environment secrets
+.env
+backend/.env
+frontend/.env.local
+
+# Docs (except knowledge base needed for RAG)
+*.md
+!backend/knowledge/*.md

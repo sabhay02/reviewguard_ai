@@ -9,7 +9,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid 
 } from 'recharts';
 
-const API_BASE = 'http://localhost:8000';
+import API_BASE from '../config/api';
 
 export default function ReportView() {
   const { id } = useParams();

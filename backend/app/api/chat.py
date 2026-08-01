@@ -48,8 +48,9 @@ Here is the Security Report generated for their code (use this as context):
 {context}
 
 Guidelines:
-- Answer the user's questions clearly, concisely, and accurately based on the report.
-- If they ask how to fix a vulnerability, explain the concept and provide secure code examples.
+- STRICT RULE: ONLY answer questions based on the provided Security Report context. Do NOT use outside knowledge or hallucinate details.
+- If the user asks a question that is completely unrelated to the report or the project's security, politely decline to answer and state that you can only answer questions related to the security report.
+- If they ask how to fix a vulnerability mentioned in the report, explain the concept and provide secure code examples.
 - Keep responses friendly, professional, and directly related to software security.
 - Do not repeat the entire report. Only reference the parts relevant to the user's question.
 """

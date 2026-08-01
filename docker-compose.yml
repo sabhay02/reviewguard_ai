@@ -1,0 +1,86 @@
+services:
+  # ── Redis Database ──
+  redis:
+    image: redis:7-alpine
+    container_name: reviewguard-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  # ── Backend (FastAPI + AI Agents) ──
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: reviewguard-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - backend/.env
+    environment:
+      - ALLOWED_ORIGINS=http://localhost,http://localhost:80,http://localhost:5173
+      - REDIS_HOST=redis
+    volumes:
+      - backend-data:/app/backend/data
+      - backend-reports:/app/backend/reports
+      - backend-temp:/app/backend/temp
+      - hf-cache:/root/.cache/huggingface
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  # ── ARQ Worker (Background Tasks) ──
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: reviewguard-worker
+    command: ["arq", "app.worker.WorkerSettings"]
+    env_file:
+      - backend/.env
+    environment:
+      - REDIS_HOST=redis
+    volumes:
+      - backend-data:/app/backend/data
+      - backend-reports:/app/backend/reports
+      - backend-temp:/app/backend/temp
+      - hf-cache:/root/.cache/huggingface
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  # ── Ngrok Tunnel ──
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: reviewguard-ngrok
+    env_file:
+      - backend/.env
+    command:
+      - "http"
+      - "backend:8000"
+    ports:
+      - "4040:4040"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  # ── Frontend (React + Nginx) ──
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        VITE_API_KEY: ${VITE_API_KEY:-dev-secret-key}
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    container_name: reviewguard-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend-data:
+  backend-reports:
+  backend-temp:
+  hf-cache:

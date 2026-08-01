@@ -3,7 +3,8 @@ import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import { Search, GitPullRequest, Loader2, Play, CheckCircle2, XCircle, FileText, AlertCircle, RefreshCw, Rocket } from 'lucide-react';
 
-const API_BASE = 'http://localhost:8000/review';
+import API_BASE from '../config/api';
+const REVIEW_URL = `${API_BASE}/review`;
 
 export default function ScannerWizard({ onScanComplete }) {
   const [tab, setTab] = useState('github'); // 'github' or 'pr'
@@ -34,7 +35,7 @@ export default function ScannerWizard({ onScanComplete }) {
     setResult(null);
     
     try {
-      const endpoint = tab === 'github' ? `${API_BASE}/github` : `${API_BASE}/pr`;
+      const endpoint = tab === 'github' ? `${REVIEW_URL}/github` : `${REVIEW_URL}/pr`;
       const payload = tab === 'github' 
         ? { repo_url: repoUrl } 
         : { repo_url: repoUrl, pr_number: parseInt(prNumber, 10) };
@@ -55,7 +56,7 @@ export default function ScannerWizard({ onScanComplete }) {
     setError(null);
 
     try {
-      const res = await axios.post(`${API_BASE}/${result.review_id}/decision`, {
+      const res = await axios.post(`${REVIEW_URL}/${result.review_id}/decision`, {
         approved: approved === true,
         feedback: feedback.trim(),
         action: typeof approved === 'string' ? approved : (approved ? 'approve' : 'reject')
