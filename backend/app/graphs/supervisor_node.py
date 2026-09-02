@@ -8,54 +8,31 @@ from app.utils.timer import measure
 def supervisor_node(state: ReviewState):
     repo = Path(state["repo_path"])
 
-    enabled_agents = []
+    # All 4 agents are now multi-language, so always enable all of them
+    enabled_agents = ["security", "quality", "documentation", "testgap"]
 
-    # Detect Python project
+    # Detect project type for reporting purposes
     has_python = any(repo.rglob("*.py"))
-
-    # Detect JS/Node project
+    has_js = any(repo.rglob("*.js")) or any(repo.rglob("*.ts"))
     has_package_json = (repo / "package.json").exists()
+    has_java = any(repo.rglob("*.java"))
+    has_go = any(repo.rglob("*.go"))
+    has_rust = any(repo.rglob("*.rs"))
 
-    # Detect tests
-    has_tests = (
-        any(repo.rglob("test_*.py"))
-        or any(repo.rglob("*_test.py"))
-        or any(repo.rglob("tests"))
-    )
-
-    project_type = "unknown"
-
+    # Determine project type label
+    detected = []
     if has_python:
-        project_type = "python"
+        detected.append("python")
+    if has_js or has_package_json:
+        detected.append("javascript")
+    if has_java:
+        detected.append("java")
+    if has_go:
+        detected.append("go")
+    if has_rust:
+        detected.append("rust")
 
-        enabled_agents.extend([
-            "security",
-            "quality",
-            "documentation",
-        ])
-
-        if not has_tests:
-            enabled_agents.append("testgap")
-
-    elif has_package_json:
-        project_type = "javascript"
-
-        enabled_agents.extend([
-            "security",
-            "quality",
-            "documentation",
-        ])
-
-        if not has_tests:
-            enabled_agents.append("testgap")
-
-    else:
-        # Fallback for unknown projects
-        enabled_agents.extend([
-            "security",
-            "quality",
-            "documentation",
-        ])
+    project_type = "+".join(detected) if detected else "unknown"
 
     print("\n========== SUPERVISOR ==========")
     print("Project Type :", project_type)

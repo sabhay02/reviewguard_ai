@@ -2,9 +2,13 @@ import ast
 from pathlib import Path
 
 from app.utils.filter import get_source_files
+from app.test_gap.multi_lang_detector import MultiLangTestGapDetector
 
 
 class TestGapDetector:
+
+    def __init__(self):
+        self.multi_lang_detector = MultiLangTestGapDetector()
 
     def _extract_functions(self, file_path: Path) -> list[str]:
         """
@@ -77,5 +81,9 @@ class TestGapDetector:
                         "functions": self._extract_functions(py_file),
                     }
                 )
+
+        # Detect test gaps for non-Python files
+        multi_lang_findings = self.multi_lang_detector.detect(repo_path, changed_files)
+        findings.extend(multi_lang_findings)
 
         return findings

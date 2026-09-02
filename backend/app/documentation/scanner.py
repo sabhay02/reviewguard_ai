@@ -2,9 +2,13 @@ import ast
 import os
 
 from app.utils.filter import get_source_files
+from app.documentation.multi_lang_scanner import MultiLangDocScanner
 
 
 class DocumentationScanner:
+
+    def __init__(self):
+        self.multi_lang_scanner = MultiLangDocScanner()
 
     def scan(
         self,
@@ -49,7 +53,7 @@ class DocumentationScanner:
                 )
 
         # -----------------------------
-        # Scan only changed Python files
+        # Scan Python files (AST-based)
         # -----------------------------
         paths = get_source_files(repo_path, changed_files)
 
@@ -63,6 +67,12 @@ class DocumentationScanner:
             findings.extend(
                 self.scan_python_file(path, repo_path)
             )
+
+        # -----------------------------
+        # Scan non-Python files (regex-based)
+        # -----------------------------
+        multi_lang_findings = self.multi_lang_scanner.scan(repo_path, changed_files)
+        findings.extend(multi_lang_findings)
 
         return findings
 
